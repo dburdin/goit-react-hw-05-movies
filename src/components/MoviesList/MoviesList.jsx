@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { List } from './MoviesList.styled';
 import { LinkItem } from './MoviesList.styled';
 
@@ -15,4 +17,14 @@ export const MoviesList = ({ movies, location }) => {
       })}
     </List>
   );
+};
+
+MoviesList.propType = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  location: PropTypes.object.isRequired,
 };
