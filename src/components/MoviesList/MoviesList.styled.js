@@ -5,8 +5,11 @@ export const List = styled.ul`
   display: flex;
   font-size: 20px;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   padding: 5px;
+  margin-top: 10px;
 `;
 
 export const LinkItem = styled(Link)`

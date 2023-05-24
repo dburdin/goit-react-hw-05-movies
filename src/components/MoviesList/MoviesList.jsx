@@ -2,8 +2,11 @@ import PropTypes from 'prop-types';
 
 import { List } from './MoviesList.styled';
 import { LinkItem } from './MoviesList.styled';
+import { useLocation } from 'react-router-dom';
 
-export const MoviesList = ({ movies, location }) => {
+export const MoviesList = ({ movies }) => {
+  const location = useLocation();
+
   return (
     <List>
       {movies.map(movie => {
@@ -26,5 +29,4 @@ MoviesList.propType = {
       title: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  location: PropTypes.object.isRequired,
 };

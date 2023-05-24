@@ -27,4 +27,7 @@ export const Link = styled(NavLink)`
     transform: scale(0.97);
     color: #ff7f50;
   }
+  &.active {
+    color: #ff7f50;
+  }
 `;

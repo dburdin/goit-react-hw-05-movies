@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import { getTrendingMovies } from 'API/api';
 
-import { TrendingList, TrendingItem, TrendingItemLink } from './Home.styled';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-
-  const location = useLocation();
 
   useEffect(() => {
     getTrendingMovies()
@@ -20,22 +17,11 @@ const Home = () => {
 
   return (
     <>
-      <TrendingList>
-        {trendingMovies.map(movie => {
-          return (
-            <TrendingItem key={movie.id}>
-              <TrendingItemLink
-                to={`/movies/${movie.id}`}
-                state={{ from: location }}
-              >
-                {movie.title}
-              </TrendingItemLink>
-            </TrendingItem>
-          );
-        })}
-      </TrendingList>
+      <MoviesList movies={trendingMovies}></MoviesList>
     </>
   );
 };
 
 export default Home;
+
+// adding active navlinks, adding photo blanks for avatars and posters

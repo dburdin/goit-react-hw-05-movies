@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { getMovies } from 'API/api';
 import { SearchForm, SearchInput, SearchButton } from './Movies.styled';
@@ -10,7 +10,6 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const location = useLocation();
   const name = searchParams.get('name');
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const Movies = () => {
         <SearchButton type="submit">Search</SearchButton>
       </SearchForm>
 
-      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
+      {movies.length > 0 && <MoviesList movies={movies} />}
     </>
   );
 };

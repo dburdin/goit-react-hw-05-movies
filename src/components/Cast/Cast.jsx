@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { CastList, CastItem } from './Cast.styled';
+import { getPosterUrl } from 'API/api';
 
 const Cast = () => {
   const [castInfo, setCastInfo] = useState([]);
   const { movieId } = useParams();
+
+  const BASE_IMG_URL = `http://image.tmdb.org/t/p/w300/`;
 
   useEffect(() => {
     getMovieCredits(movieId)
@@ -16,19 +19,13 @@ const Cast = () => {
       .catch(error => console.log('error.message', error.message));
   }, [movieId]);
 
-  const BASE_IMG_URL = `http://image.tmdb.org/t/p/w300/`;
-
   return (
     <>
       <CastList>
         {castInfo.map(({ id, name, profile_path, character }) => {
           return (
             <CastItem key={id}>
-              <img
-                width="150px"
-                src={`${BASE_IMG_URL}${profile_path}`}
-                alt={name}
-              />
+              <img width="150px" src={getPosterUrl(profile_path)} alt={name} />
               <b>Name:{name}</b>
               <p>Role: {character}</p>
             </CastItem>
