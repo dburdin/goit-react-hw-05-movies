@@ -23,5 +23,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// adding active navlinks, adding photo blanks for avatars and posters
