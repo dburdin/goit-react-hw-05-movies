@@ -9,8 +9,6 @@ const Cast = () => {
   const [castInfo, setCastInfo] = useState([]);
   const { movieId } = useParams();
 
-  const BASE_IMG_URL = `http://image.tmdb.org/t/p/w300/`;
-
   useEffect(() => {
     getMovieCredits(movieId)
       .then(response => {
